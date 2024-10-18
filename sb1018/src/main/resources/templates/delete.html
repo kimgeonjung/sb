@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>edit page</title>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8" />
+  <style>
+    h1 { font-size:18pt; font-weight:bold; color:gray; }
+    body { font-size:13pt; color:gray; margin:5px 25px; }
+    td { padding:0px 20px; background:#eee;}
+  </style>
+</head>
+<body>
+<h1>사원 삭제</h1>
+<table>
+  <form method="post" action="/deleteEmp" th:object="${deleteEmp}">
+    <tr>
+      <td><label for="empno">사번</label> </td>
+      <td><input type="text" name="empno" th:value="*{empno}" readonly/></td>
+    </tr>
+    <tr>
+      <td><label for="ename">이름</label> </td>
+      <td><input type="text" name="ename" th:value="*{ename}" /></td>
+    </tr>
+    <tr>
+      <td><label for="job">직무</label> </td>
+      <td><input type="text" name="job" th:value="*{job}" /></td>
+    </tr>
+    <tr>
+      <td><label for="mgr">멘토</label> </td>
+      <td><input type="text" name="mgr" th:value="*{mgr}" /></td>
+    </tr>
+    <tr>
+      <td><label for="hiredate">고용일</label> </td>
+      <td><input type="text" name="hiredate" th:value="*{hiredate}" readonly/></td>
+    </tr>
+    <tr>
+      <td><label for="sal">연봉($)</label> </td>
+      <td><input type="text" name="sal" th:value="*{sal}" /></td>
+    </tr>
+    <tr>
+      <td><label for="comm">추가수당</label> </td>
+      <td><input type="text" name="comm" th:value="*{comm}" /></td>
+    </tr>
+    <tr>
+      <td><label for="deptno">부서번호</label> </td>
+      <td><input type="text" name="deptno" th:value="*{deptno}" /></td>
+    </tr>
+
+    <tr>
+      <td></td><td><input type="submit" value="삭제"/></td>
+    </tr>
+
+  </form>
+</table>
+</body>
+</html>

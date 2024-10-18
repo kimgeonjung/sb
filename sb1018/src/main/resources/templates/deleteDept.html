@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>edit page</title>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8" />
+  <style>
+    h1 { font-size:18pt; font-weight:bold; color:gray; }
+    body { font-size:13pt; color:gray; margin:5px 25px; }
+    td { padding:0px 20px; background:#eee;}
+  </style>
+</head>
+<body>
+<h1>사원 삭제</h1>
+<table>
+  <form method="post" action="/dept/delete" th:object="${deleteDept}">
+    <tr>
+      <td><label for="deptno">부서번호</label> </td>
+      <td><input type="text" name="deptno" th:value="*{deptno}" /></td>
+    </tr>
+    <tr>
+      <td><label for="dname">부서명</label> </td>
+      <td><input type="text" name="dname" th:value="*{dname}" /></td>
+    </tr>
+    <tr>
+      <td><label for="loc">지역</label> </td>
+      <td><input type="text" name="loc" th:value="*{loc}" /></td>
+    </tr>
+
+    <tr>
+      <td></td><td><input type="submit" value="삭제"/></td>
+    </tr>
+
+  </form>
+</table>
+</body>
+</html>

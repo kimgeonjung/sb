@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>top page</title>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=UTF-8" />
+  <style>
+    h1 { font-size:18pt; font-weight:bold; color:gray;}
+    body { font-size:13pt; color:gray; margin:5px 25px; }
+    tr { margin: 5px; }
+    th { padding:5px; color:white; background: darkgray; }
+    td { padding:5px; color:black; background: #e0e0ff; }
+    a { text-decoration-line: none; font-weight: bold; color: inherit; }
+    h3 a {border: 3px solid lightgray; border-radius: 10px; display: inline-block; }
+
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div style="display: flex; justify-content: space-between;">
+  <h1>부서 명단</h1>
+  <h3><a th:href="@{/}">사원 명단</a></h3>
+</div>
+<table>
+  <tr>
+    <th>부서번호</th><th>부서명</th><th>지역</th><th>삭제</th>
+  </tr>
+  <tr th:each="obj : ${deptList}">
+    <td th:text="${obj.deptno}"></td>
+    <td><a th:href="@{/editdept/{id}(id=${obj.deptno})}" th:text="${obj.dname}"></a></td>
+    <td th:text="${obj.loc}"></td>
+    <td><a th:href="@{/dept/deleteDept/{id}(id=${obj.deptno})}" th:text="X"></a></td>
+  </tr>
+</table>
+<hr/>
+<h3>부서 추가</h3>
+<table>
+  <form method="post" action="/dept/addDept" th:object="${dept}">
+    <tr>
+      <td><label for="deptno">부서번호</label> </td>
+      <td><input type="text" name="deptno" /></td>
+    </tr>
+    <tr>
+      <td><label for="dname">부서명</label> </td>
+      <td><input type="text" name="dname" /></td>
+    </tr>
+    <tr>
+      <td><label for="loc">지역</label> </td>
+      <td><input type="text" name="loc" /></td>
+    </tr>
+    <tr>
+      <td></td><td><input type="submit" /></td>
+    </tr>
+  </form>
+</table>
+</body>
+</html>
