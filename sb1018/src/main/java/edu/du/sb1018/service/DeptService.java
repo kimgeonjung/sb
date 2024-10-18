@@ -10,7 +10,6 @@ import javax.persistence.PersistenceUnit;
 import java.util.List;
 
 @Service
-@Log4j2
 public class DeptService {
 
     @PersistenceUnit
@@ -57,39 +56,4 @@ public class DeptService {
         em.remove(dept);
         em.getTransaction().commit();
     }
-
-    public void reset() {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-
-        Dept dept10 = em.find(Dept.class, 10);
-        if(dept10 != null) {
-            dept10.setDname("ACCOUNTING");
-            dept10.setLoc("NEW YORK");
-        }
-
-        Dept dept20 = em.find(Dept.class, 20);
-        if(dept20 != null) {
-            dept20.setDname("RESEARCH");
-            dept20.setLoc("DALLAS");
-        }
-
-        Dept dept30 = em.find(Dept.class, 30);
-        if(dept30 != null) {
-            dept30.setDname("SALES");
-            dept30.setLoc("CHICAGO");
-        }
-
-        Dept dept40 = em.find(Dept.class, 40);
-        if(dept40 != null) {
-            dept40.setDname("OPERATIONS");
-            dept40.setLoc("BOSTON");
-        }
-
-        em.getTransaction().commit();
-
-    }
-
-
-
 }
